@@ -19,6 +19,7 @@ class CreateCountiesTable extends Migration
             $table->string('name');
             $table->integer('code')->unsigned();
             $table->string('desc', 100)->nullable();
+            $table->string('emblem', 100)->nullable()->default('text');
             $table->timestamps();
             $table->softDeletes();
         });
