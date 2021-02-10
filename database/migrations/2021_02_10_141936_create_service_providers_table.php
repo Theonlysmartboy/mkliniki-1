@@ -15,7 +15,20 @@ class CreateServiceProvidersTable extends Migration
     {
         Schema::create('service_providers', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->string('registration_details');
+            $table->integer('age')->unsigned();
+            $table->string('gender', 20);
+            $table->string('address');
+            $table->string('email');
+            $table->integer('telephone')->nullable(); 
+            $table->string('website')->nullable();
+            $table->tinyInteger('ward');
+            $table->string('town');
+            $table->tinyInteger('category');
+            $table->tinyInteger('duration')->default(0);
+           $table->timestamps();
+           $table->softDeletes();
         });
     }
 
