@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,11 @@ class CreateCountiesTable extends Migration
     {
         Schema::create('counties', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('code')->unsigned();
+            $table->string('desc', 100)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

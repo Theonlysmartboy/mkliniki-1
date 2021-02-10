@@ -15,6 +15,9 @@ class CreateWardsTable extends Migration
     {
         Schema::create('wards', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('desc');
+            $table->tinyInteger('sub_county');
             $table->timestamps();
         });
     }

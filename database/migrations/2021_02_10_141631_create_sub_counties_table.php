@@ -15,6 +15,9 @@ class CreateSubCountiesTable extends Migration
     {
         Schema::create('sub_counties', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('desc');
+            $table->tinyInteger('county');
             $table->timestamps();
         });
     }
