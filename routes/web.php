@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,5 +24,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', [AdminController::class, 'dashboard']);
+    Route::get('/', [AdminController::class, 'dashboard'])->name('admin.home');
+    
+});
+Route::group(['prefix' => 'service'], function () {
+    Route::get('/', [ServiceController::class, 'add'])->name('service.add');
+    Route::post('/', [ServiceController::class, 'store'])->name('service.store');
+    
 });

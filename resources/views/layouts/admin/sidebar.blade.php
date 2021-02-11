@@ -6,7 +6,7 @@
                     <ul class="widget widget-menu unstyled">
                         <li class="active"><a href="index.html"><i class="menu-icon icon-dashboard"></i>Dashboard
                         </a></li>
-                        <li><a href="activity.html"><i class="menu-icon icon-bullhorn"></i>News Feed </a>
+                        <li><a href="{{ route('service.add') }}"><i class="menu-icon icon-bullhorn"></i>Add Service Provider </a>
                         </li>
                         <li><a href="message.html"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
                             11</b> </a></li>
