@@ -8,6 +8,6 @@ class AdminController extends Controller
 {
     public function dashboard(){
         $title = "admin.dashboard";
-        return view('admin.dahsboard',compact('title'));
+        return view('admin.dashboard',compact('title'));
     }
 }
