@@ -4,7 +4,7 @@
 <div class="content">
 <div class="module">
     <div class="module-head">
-        <h3>DataTables</h3>
+        <h3>Services <button class="btn btn-success btn-md" id="addService"><i class="fa fa-plus" aria-hidden="true">Add</i></button></h3>
     </div>
     <div class="module-body table">
         <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
@@ -22,10 +22,9 @@
                     <td>{{ $service->id }}</td>
                     <td>{{ $service->name }}</td>
                     <td>{{ $service->description }}</td>
-                    <td><a href="" class="btn btn-sm btn-primary">
+                    <td><a href="" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>
                     </tr>
                 @endforeach
-                
             </tbody>
             <tfoot>
                 <tr>

@@ -10,7 +10,7 @@ class ServiceController extends Controller
 {
     //
     public function index(){
-        if(!Auth::user()){
+        if(Auth::user()){
             $services = Service::get();
             return view('service.index',compact('services'));
         }else{
