@@ -19,8 +19,6 @@
                             </div>
                         </div>
 
-                        
-
                         <div class="control-group">
                             <label class="control-label" for="basicinput">Description</label>
                             <div class="controls">
