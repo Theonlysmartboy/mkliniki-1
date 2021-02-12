@@ -2,7 +2,7 @@
     <div class="navbar-inner">
         <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-                <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">Edmin </a>
+                <i class="icon-reorder shaded"></i></a><a class="brand" href="#">Mkliniki </a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
                 <ul class="nav nav-icons">
                     <li class="active"><a href="#"><i class="icon-envelope"></i></a></li>
@@ -35,7 +35,11 @@
                             <li><a href="#">Edit Profile</a></li>
                             <li><a href="#">Account Settings</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="{{ route('logout') }}"  onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">Logout</a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                         </ul>
                     </li>
                 </ul>

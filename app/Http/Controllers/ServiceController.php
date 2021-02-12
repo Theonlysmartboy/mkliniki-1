@@ -8,8 +8,8 @@ use App\Models\Service;
 class ServiceController extends Controller
 {
     //
-    public function add(){
-        return view('service.add');
+    public function index(){
+        return view('service.index');
 
     }
     //
