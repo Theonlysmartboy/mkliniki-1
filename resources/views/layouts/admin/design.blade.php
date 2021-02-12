@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edmin</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
         <link type="text/css" href="{{ asset('backend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
         <link type="text/css" href="{{ asset('backend/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet">
         <link type="text/css" href="{{ asset('backend/css/theme.css') }}" rel="stylesheet">
@@ -24,5 +24,14 @@
         <script src="{{ asset('backend/scripts/flot/jquery.flot.resize.js') }}" type="text/javascript"></script>
         <script src="{{ asset('backend/scripts/datatables/jquery.dataTables.js') }}" type="text/javascript"></script>
         <script src="{{ asset('backend/scripts/common.js') }}" type="text/javascript"></script>
+        <script>
+            $(document).ready(function() {
+                $('.datatable-1').dataTable();
+                $('.dataTables_paginate').addClass("btn-group datatable-pagination");
+                $('.dataTables_paginate > a').wrapInner('<span />');
+                $('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+                $('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+            } );
+        </script>
       
     </body>

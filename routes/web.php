@@ -33,31 +33,31 @@ Route::group(['prefix' => 'admin'], function () {
 });
 //service route group
 Route::group(['prefix' => 'service'], function () {
-    Route::get('/', [ServiceController::class, 'view'])->name('service');
+    Route::get('/', [ServiceController::class, 'index'])->name('service');
     Route::post('/', [ServiceController::class, 'store'])->name('service.store');
     
 });
 //service provider route group
 Route::group(['prefix' => 'serviceprovider'], function () {
-    Route::get('/', [ServiceProviderController::class, 'view'])->name('provider');
+    Route::get('/', [ServiceProviderController::class, 'index'])->name('provider');
     Route::post('/', [ServiceProviderController::class, 'store'])->name('provider.store');
     
 });
 //county route group
 Route::group(['prefix' => 'county'], function () {
-    Route::get('/', [CountyController::class, 'view'])->name('county');
+    Route::get('/', [CountyController::class, 'index'])->name('county');
     Route::post('/', [CountyController::class, 'store'])->name('county.store');
     
 });
 //sub county route group
 Route::group(['prefix' => 'subcounty'], function () {
-    Route::get('/', [SubCountyController::class, 'view'])->name('subcounty');
+    Route::get('/', [SubCountyController::class, 'index'])->name('subcounty');
     Route::post('/', [SubCountyController::class, 'store'])->name('subcounty.store');
     
 });
 //Ward route group
 Route::group(['prefix' => 'ward'], function () {
-    Route::get('/', [WardController::class, 'view'])->name('ward');
+    Route::get('/', [WardController::class, 'index'])->name('ward');
     Route::post('/', [WardController::class, 'store'])->name('ward.store');
     
 });
