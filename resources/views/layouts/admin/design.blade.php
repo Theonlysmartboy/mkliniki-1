@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ config('app.name', 'Laravel') }}</title>
-        <link type="text/css" href="{{ asset('backend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-        <link type="text/css" href="{{ asset('backend/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet">
-        <link type="text/css" href="{{ asset('backend/css/theme.css') }}" rel="stylesheet">
-        <link type="text/css" href="{{ asset('backend/images/icons/css/font-awesome.css') }}" rel="stylesheet">
-        <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
-            rel='stylesheet'>
-    </head>
-<body>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ config('app.name', 'Laravel') }} | <?php echo $title ?></title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{ asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div class="wrapper">
     @include('layouts.common.header')
     @include('layouts.admin.sidebar')
     @yield('content')
     @include('layouts.common.footer')
-    <script src="{{ asset('backend/scripts/jquery-1.9.1.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('backend/scripts/jquery-ui-1.10.1.custom.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('backend/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('backend/scripts/flot/jquery.flot.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('backend/scripts/flot/jquery.flot.resize.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('backend/scripts/datatables/jquery.dataTables.js') }}" type="text/javascript"></script>
-        <script src="{{ asset('backend/scripts/common.js') }}" type="text/javascript"></script>
-        <script>
-            $(document).ready(function() {
-                $('.datatable-1').dataTable();
-                $('.dataTables_paginate').addClass("btn-group datatable-pagination");
-                $('.dataTables_paginate > a').wrapInner('<span />');
-                $('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
-                $('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
-            } );
-        </script>
-      
-    </body>
+    </div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- overlayScrollbars -->
+<script src="{{ asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('backend/dist/js/adminlte.js') }}"></script>
+
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<script src="{{ asset('backend/plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
+<script src="{{ asset('backend/plugins/raphael/raphael.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
+<!-- ChartJS -->
+<script src="{{ asset('backend/plugins/chart.js/Chart.min.js') }}"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('backend/dist/js/demo.js') }}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{ asset('backend/dist/js/pages/dashboard2.js') }}"></script>
+</body>
+</html>
