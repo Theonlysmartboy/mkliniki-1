@@ -17,7 +17,7 @@ class CreateServiceProvidersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('registration_details');
-            $table->integer('age')->unsigned();
+            $table->string('age');
             $table->string('gender', 20);
             $table->string('address');
             $table->string('email');
