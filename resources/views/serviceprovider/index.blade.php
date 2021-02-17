@@ -26,7 +26,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title btn btn-sm btn-success" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus" id="addprovider"></i></h3>
+                <h3 class="card-title btn btn-sm btn-success" data-toggle="modal" data-target="#provider_modal"><i class="fa fa-plus" id="addprovider"></i></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -73,17 +73,16 @@
                 </table>
               </div>
               <!-- /.card-body -->
-              <div class="modal fade" id="modal-default">
+              <div class="modal fade" id="provider_modal">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-title">Default Modal</h4>
+                      <h4 class="modal-title">Add service  Provider</h4>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-              <div class="container providermodal" id="providermodal">
                 <form action="">
                   <div class="form-group">
                     <label for="service_provider_name" class="form-label">
@@ -122,7 +121,6 @@
                     </div>
                   </div>
                 </form>
-              </div>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
