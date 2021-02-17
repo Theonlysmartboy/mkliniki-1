@@ -18,7 +18,6 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -50,8 +49,7 @@
                     <td>{{ $serviceprovider->name }}</td>
                     <td>{{ $serviceprovider->registration_details }}</td>
                     <td>{{ $serviceprovider->age }}{{ $serviceprovider->gender }}</td>
-                    <td>{{ $serviceprovider->address }},{{ $serviceprovider->email }},{{ $serviceprovider->telephone }}</td>
-                             
+                    <td>{{ $serviceprovider->address }},{{ $serviceprovider->email }},{{ $serviceprovider->telephone }}</td>      
                     <td>{{ $serviceprovider->category_name }}</td>
                     <td>{{ $serviceprovider->town }}</td>
                     <td><a href="" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>

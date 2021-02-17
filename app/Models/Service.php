@@ -9,6 +9,7 @@ use App\Models\serviceProvider;
 class Service extends Model
 {
     use HasFactory;
+    protected $table = 'services';
     public function serviceProvider(){
         return $this->belongsToMany(ServiceProvider::class);
     }
