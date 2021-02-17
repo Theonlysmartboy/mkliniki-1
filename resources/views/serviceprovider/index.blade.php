@@ -26,7 +26,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title btn btn-sm btn-success"><i class="fa fa-plus" id="addprovider"></i></h3>
+                <h3 class="card-title btn btn-sm btn-success" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus" id="addprovider"></i></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -73,6 +73,16 @@
                 </table>
               </div>
               <!-- /.card-body -->
+              <div class="modal fade" id="modal-default">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Default Modal</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
               <div class="container providermodal" id="providermodal">
                 <form action="">
                   <div class="form-group">
@@ -113,6 +123,17 @@
                   </div>
                 </form>
               </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
             </div>
             <!-- /.card -->
           </div>
