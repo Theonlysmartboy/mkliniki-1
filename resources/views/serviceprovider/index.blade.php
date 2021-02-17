@@ -51,7 +51,7 @@
                     <td>{{ $serviceprovider->registration_details }}</td>
                     <td>{{ $serviceprovider->age }}{{ $serviceprovider->gender }}</td>
                     <td>{{ $serviceprovider->address }},{{ $serviceprovider->email }},{{ $serviceprovider->telephone }}</td>
-                                    
+                             
                     <td>{{ $serviceprovider->category_name }}</td>
                     <td>{{ $serviceprovider->town }}</td>
                     <td><a href="" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
@@ -73,6 +73,46 @@
                 </table>
               </div>
               <!-- /.card-body -->
+              <div class="container providermodal" id="providermodal">
+                <form action="">
+                  <div class="form-group">
+                    <label for="service_provider_name" class="form-label">
+                      Name
+                    </label>
+                    <input type="text" class="form-control" placeholder="Enter name of Service Provider" name="service_provider_name">
+                  </div>
+                  <div class="form-group">
+                    <label for="service_name_description" class="form-label">Description</label>
+                    <input type="text" class="form-control" placeholder="Description" name="service_name_description">
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="county" class="form-label">County</label>
+                        <select name="county" id="" class="form-control">
+                         <?php echo $county_dropdown ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="SubCounty" class="form-label">Sub County</label>
+                    <select name="subcounty" id="" class="form-control">
+                     <?php echo $subcounty_dropdown ?>
+                    </select>
+                  </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="ward" class="form-label">Ward</label>
+                        <select name="ward" id="" class="form-control">
+                         <?php echo $ward_dropdown ?>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
             <!-- /.card -->
           </div>
