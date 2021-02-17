@@ -1,25 +1,45 @@
 @extends('layouts.admin.design')
 @section('content')
-<div class="span9">
-<div class="content">
-<div class="module">
-    <div class="module-head">
-        <h3>Services <button class="btn btn-success btn-md" id="addServiceProvider"><i class="fa fa-plus" aria-hidden="true">Add</i></button></h3>
-    </div>
-    <div class="module-body table">
-        <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped"  width="100%">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Registration details</th>
-                    <th>age_gender</th>
-                    <th>address</th>
-                    <th>category</th>
-                    <th>town</th>
-                    <th>action</th>
-                </tr>
-            </thead>
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                <h1>DataTables</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">DataTables</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">DataTable with default features</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Registration details</th>
+                                <th>age_gender</th>
+                                <th>address</th>
+                                <th>category</th>
+                                <th>town</th>
+                                <th>action</th>
+                            </tr>
+                        </thead>
             <tbody>
                 @foreach ($service_providers as $serviceprovider)
                     <tr>
@@ -49,10 +69,17 @@
             </tfoot>
         </table>
     </div>
-</div><!--/.module-->
-</div><!--/.content-->
-</div><!--/.span9-->
-</div>
-</div><!--/.container-->
-</div><!--/.wrapper-->
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+    </div>
+    <!-- /.col -->
+    </div>
+    <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 @endsection
