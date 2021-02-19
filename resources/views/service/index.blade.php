@@ -40,11 +40,11 @@
                   </tr>
                   </thead>
                   <tbody>
-                    <?php $count = 0; ?>
+                    <?php //$count = 0; ?>
                     @foreach ($services as $service)
-                    <?php $count++;?>
+                    <?php //$count++;?>
                     <tr>
-                    <td> {{ $count }}</td>
+                    <td> {{ $service->id }}</td>
                     <td>{{ $service->name }}</td>
                     <td>{{ $service->description }}</td>
                     <td><a href="" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>
@@ -129,9 +129,8 @@
             $('.error').text(data.errors.service_description);
           }else{
             $('.error').remove();
-           
             $('#example1').append(" <tr>"+
-                    "<td>" + id + "</td>"+
+                    "<td>" + data.id + "</td>"+
                     "<td>" + data.name + "</td>"+
                     "<td>" + data.description + "</td>"+
                     "<td><a href='' class='btn btn-sm btn-primary'><i class='fa fa-eye' aria-hidden='true'></i></a></td>"+
