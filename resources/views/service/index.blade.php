@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Service Providers</h1>
+            <h1>Services</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Service Providers</li>
+              <li class="breadcrumb-item active">Services</li>
             </ol>
           </div>
         </div>
@@ -40,9 +40,11 @@
                   </tr>
                   </thead>
                   <tbody>
+                    <?php $count = 0; ?>
                     @foreach ($services as $service)
+                    <?php $count++;?>
                     <tr>
-                    <td>{{ $service->id }}</td>
+                    <td> {{ $count }}</td>
                     <td>{{ $service->name }}</td>
                     <td>{{ $service->description }}</td>
                     <td><a href="" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>
@@ -64,7 +66,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-title">Add service  Provider</h4>
+                      <h4 class="modal-title">Add Service </h4>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -127,8 +129,9 @@
             $('.error').text(data.errors.service_description);
           }else{
             $('.error').remove();
+           
             $('#example1').append(" <tr>"+
-                    "<td>" + data.id + "</td>"+
+                    "<td>" + id + "</td>"+
                     "<td>" + data.name + "</td>"+
                     "<td>" + data.description + "</td>"+
                     "<td><a href='' class='btn btn-sm btn-primary'><i class='fa fa-eye' aria-hidden='true'></i></a></td>"+
