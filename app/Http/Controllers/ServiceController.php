@@ -38,6 +38,7 @@ class ServiceController extends Controller
             $service = new Service;
             $service->name=$data['service_name'];
             $service->description=$data['service_description'];
+            //$count = Service::count();
             $service->save();
             return response()->json($service);
         }
