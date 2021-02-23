@@ -52,7 +52,7 @@
                     <td>{{ $serviceprovider->address }},{{ $serviceprovider->email }},{{ $serviceprovider->telephone }}</td>      
                     <td>{{ $serviceprovider->category_name }}</td>
                     <td>{{ $serviceprovider->town }}</td>
-                    <td><a href="" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                    <td><a href="" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp; <a href="" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a> &nbsp; <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></a></td>
                     </tr>
                 @endforeach                  
                   </tbody>

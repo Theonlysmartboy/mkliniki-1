@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Service Providers</h1>
+            <h1>Counties</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Service Providers</li>
+              <li class="breadcrumb-item active">Counties</li>
             </ol>
           </div>
         </div>
@@ -49,6 +49,7 @@
                     <td>{{ $county->code }}</td>
                     <td>{{ $county->desc }}</td>
                     <td>{{ $county->emblem }}</td>
+                    
                     <td><a href="" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp; <a href="" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a> &nbsp; <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></a></td>
                     </tr>
                 @endforeach                 
@@ -78,33 +79,33 @@
                     <div class="modal-body">
                 <form action="">
                   <div class="form-group">
-                    <label for="county_name" class="form-label">
-                      Name
-                    </label>
+                    <label for="county_name" class="form-label">Name</label>
                     <input type="text" class="form-control" placeholder="Enter name of County" name="county_name">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
                   </div>
                   <div class="form-group">
                     <label for="county_code" class="form-label">Code</label>
                     <input type="text" class="form-control" placeholder="Code of county" name="county_code">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
                   </div>
                   
                   <div class="form-group">
                     <label for="county_description" class="form-label">Description</label>
                     <input type="text" class="form-control" placeholder="Description of County" name="county_description">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
                   </div>
 
                   <div class="form-group">
-                    <label for="county_emblem" class="form-label">
-                      Emblem
-                    </label>
+                    <label for="county_emblem" class="form-label">Emblem</label>
                     <input type="text" class="form-control" placeholder="Emblem of county" name="county_emblem">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
                   </div>
                   
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary" id="save_county_btn">Save changes</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -124,6 +125,42 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <script>
+    //check if save_county_button has been clicked
+    $("#save_county_btn").click(function(){
+      $.ajax({
+        type : 'POST',
+        url : 'county',
+        data : {
+          '_token' : $('input[name=_token]').val(),
+          'county_name' : $('input[name=county_name]').val(),
+          'county_code':$('input[name=county_code]').val(),
+          'county_description' : $('input[name=county_description]').val(),
+          'county_emblem':$('input[name=county_emblem]').val(),
+          },
+          success : function(data){
+            if((data.errors)){
+              $('.error').show();
+              $('.error').prop('hidden',false);
+              $('.error').text(data.errors.county_name);
+              $('.error').text(data.errors.county_description);
+              $('.error.').text(data.errors.county_code);
+              $('.error.').text(data.errors.county_emblem);
+            }else{
+              $('.error').remove();
+              $('#example1').append(" <tr>"+
+                      "<td>" + data.id + "</td>"+
+                      "<td>" + data.name + "</td>"+
+                      "<td>" + data.code + "</td>"+
+                      "<td>" + data.desc + "</td>"+
+                      "<td>" + data.emblem + "</td>"+
+                      "<td><a href='' class='btn btn-sm btn-primary'><i class='fa fa-eye' aria-hidden='true'></i></a></td>"+
+                      "</tr>")
+            }
+          },
+      })
+    })
+    </script>
 @endsection
 
 
