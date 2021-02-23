@@ -75,9 +75,7 @@
                 <form class="form-horizontal" role="form">
                 @csrf
                   <div class="form-group">
-                    <label for="service_name" class="control-label">
-                      Name
-                    </label>
+                    <label for="service_name" class="control-label">Name</label>
                     <input type="text" class="form-control" placeholder="Enter name of Service" name="service_name" required>
                     <p class="error text-center alert alert-danger hidden" hidden></p>
                   </div>
