@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Service Providers</h1>
+            <h1>Services</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Sub Counties</li>
+              <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div>
         </div>
@@ -26,7 +26,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title btn btn-sm btn-success" data-toggle="modal" data-target="#service_modal"><i class="fa fa-plus" id="addsubcounty"></i></h3>
+                <h3 class="card-title btn btn-sm btn-success" data-toggle="modal" data-target="#service_modal"><i class="fa fa-plus" id="addprovider"></i></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -35,19 +35,18 @@
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Descrption</th>
-                    <th>County</th>
-                    
+                    <th>Email</th>
+                    <th>action</th>
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach ($subcounties as $subcounty)
+                    <?php //$count = 0; ?>
+                    @foreach ($users as $user)
+                    <?php //$count++;?>
                     <tr>
-                    <td>{{ $subcounty->id }}</td>
-                    <td>{{ $subcounty->name }}</td>
-                    <td>{{ $subcounty->desc }}</td>
-                    <td>{{ $subcounty->county }}</td>
-
+                    <td> {{ $service->id }}</td>
+                    <td>{{ $service->name }}</td>
+                    <td>{{ $service->email }}</td>
                     <td><a href="" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp; <a href="" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a> &nbsp; <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></a></td>
                     </tr>
                 @endforeach                 
@@ -56,8 +55,8 @@
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Descrption</th>
-                    <th>County</th>
+                    <th>Email</th>
+                    <th>action</th>
                   </tr>
                   </tfoot>
                 </table>
@@ -67,36 +66,29 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-title">Add SubCounty</h4>
+                      <h4 class="modal-title">Add User </h4>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-                <form action="">
-                    <div class="form-group">
-                        <label for="county" class="form-label">County</label>
-                        <select name="county" id="" class="form-control">
-                         <?php echo $county_dropdown ?>
-                        </select>
-                      </div>
+                <form class="form-horizontal" role="form">
+                @csrf
                   <div class="form-group">
-                    <label for="subcounty_name" class="form-label">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter name of SubCounty" name="subcounty_name">
+                    <label for="service_name" class="control-label">Name</label>
+                    <input type="text" class="form-control" placeholder="Enter name of Service" name="service_name" required>
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
                   </div>
-                  
-                  
                   <div class="form-group">
-                    <label for="subcounty_description" class="form-label">Description</label>
-                    <input type="text" class="form-control" placeholder="Description of SubCounty" name="subcounty_description">
+                    <label for="service_description" class="control-label">Email</label>
+                    <input type="text" class="form-control" placeholder="Description" name="service_description" required>
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
                   </div>
-
-                                  
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary" id="save_service_btn">Save changes</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -116,6 +108,34 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <script>
+  //check if save_service_button has been clicked
+  $("#save_service_btn").click(function(){
+    $.ajax({
+      type : 'POST',
+      url : 'service',
+      data : {
+        '_token' : $('input[name=_token]').val(),
+        'service_name' : $('input[name=service_name]').val(),
+        'service_description' : $('input[name=service_description]').val(),
+        },
+        success : function(data){
+          if((data.errors)){
+            $('.error').show();
+            $('.error').prop('hidden',false);
+            $('.error').text(data.errors.service_name);
+            $('.error').text(data.errors.service_description);
+          }else{
+            $('.error').remove();
+            $('#example1').append(" <tr>"+
+                    "<td>" + data.id + "</td>"+
+                    "<td>" + data.name + "</td>"+
+                    "<td>" + data.description + "</td>"+
+                    "<td><a href='' class='btn btn-sm btn-primary'><i class='fa fa-eye' aria-hidden='true'></i></a></td>"+
+                    "</tr>")
+          }
+        },
+    })
+  })
+  </script>
 @endsection
-
-

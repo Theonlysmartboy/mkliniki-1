@@ -61,3 +61,9 @@ Route::group(['prefix' => 'ward'], function () {
     Route::post('/', [WardController::class, 'store'])->name('ward.store');
     
 });
+//Users route Group
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/', [UserController::class, 'index'])->name('user');
+    Route::post('/', [UserController::class, 'store'])->name('user.store');
+    
+});

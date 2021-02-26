@@ -36,17 +36,17 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Descrption</th>
-                    <th>County</th>
+                    <th>Sucounty</th>
                     
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach ($subcounties as $subcounty)
+                    @foreach ($wards as $ward)
                     <tr>
-                    <td>{{ $subcounty->id }}</td>
-                    <td>{{ $subcounty->name }}</td>
-                    <td>{{ $subcounty->desc }}</td>
-                    <td>{{ $subcounty->county }}</td>
+                    <td>{{ $ward->id }}</td>
+                    <td>{{ $ward->name }}</td>
+                    <td>{{ $ward->desc }}</td>
+                    <td>{{ $ward->subcounty }}</td>
 
                     <td><a href="" class="btn btn-sm btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp; <a href="" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a> &nbsp; <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></a></td>
                     </tr>
@@ -57,7 +57,7 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Descrption</th>
-                    <th>County</th>
+                    <th>SubCounty</th>
                   </tr>
                   </tfoot>
                 </table>
@@ -67,7 +67,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-title">Add SubCounty</h4>
+                      <h4 class="modal-title">Add Ward</h4>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -79,19 +79,22 @@
                         <select name="county" id="" class="form-control">
                          <?php echo $county_dropdown ?>
                         </select>
+                      </div><div class="form-group">
+                        <label for="subcounty" class="form-label">County</label>
+                        <select name="subcounty" id="" class="form-control">
+                         <?php echo $subcounty_dropdown ?>
+                        </select>
                       </div>
-                  <div class="form-group">
-                    <label for="subcounty_name" class="form-label">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter name of SubCounty" name="subcounty_name">
-                  </div>
-                  
-                  
-                  <div class="form-group">
-                    <label for="subcounty_description" class="form-label">Description</label>
-                    <input type="text" class="form-control" placeholder="Description of SubCounty" name="subcounty_description">
-                  </div>
 
-                                  
+                  <div class="form-group">
+                    <label for="ward_name" class="form-label">Name</label>
+                    <input type="text" class="form-control" placeholder="Enter name of Ward" name="ward_name">
+                  </div>
+                  <div class="form-group">
+                    <label for="ward_description" class="form-label">Description</label>
+                    <input type="text" class="form-control" placeholder="Enter description" name="subcounty_description">
+                  </div>
+                                                    
                 </form>
             </div>
             <div class="modal-footer justify-content-between">

@@ -85,11 +85,56 @@
                   <div class="form-group">
                     <label for="service_provider_name" class="form-label">Name</label>
                     <input type="text" class="form-control" placeholder="Enter name of Service Provider" name="service_provider_name">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
                   </div>
                   <div class="form-group">
-                    <label for="service_name_description" class="form-label">Description</label>
-                    <input type="text" class="form-control" placeholder="Description" name="service_name_description">
+                    <label for="registration_details" class="form-label">Description</label>
+                    <input type="text" class="form-control" placeholder="Registration Details" name="registration_details">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
                   </div>
+                  <div class="form-group">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="text" class="form-control" placeholder="Age" name="age">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
+                  </div>
+                  <div class="form-group">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" placeholder="Address" name="address">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
+                  </div>
+                  <div class="form-group">
+                    <label for="telephone" class="form-label">Telephone</label>
+                    <input type="text" class="form-control" placeholder="telephone" name="telephone">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" placeholder="email" name="email">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
+                  </div>
+                  <div class="form-group">
+                    <label for="website" class="form-label">Website</label>
+                    <input type="text" class="form-control" placeholder="Website Address" name="website">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
+                  </div>
+                  <div class="form-group">
+                    <label for="town" class="form-label">Town</label>
+                    <input type="text" class="form-control" placeholder="Town" name="town">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
+                  </div>
+                  <div class="form-group">
+                    <label for="duration" class="form-label">Duration</label>
+                    <input type="text" class="form-control" placeholder="Duration" name="duration">
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
+                  </div>
+                  <div class="form-group">
+                    <label for="age" class="form-label">Category</label>
+                    <select name="category" id="" class="form_control">
+                      <?php echo $category_dropdown; ?>
+                    </select>
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
+                  </div>
+                  
                   <div class="row">
                     <div class="col-md-4">
                       <div class="form-group">
@@ -97,6 +142,7 @@
                         <select name="county" id="" class="form-control">
                          <?php echo $county_dropdown ?>
                         </select>
+                        <p class="error text-center alert alert-danger hidden" hidden></p>
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -105,6 +151,7 @@
                     <select name="subcounty" id="" class="form-control">
                      <?php echo $subcounty_dropdown ?>
                     </select>
+                    <p class="error text-center alert alert-danger hidden" hidden></p>
                   </div>
                     </div>
                     <div class="col-md-4">
@@ -113,6 +160,7 @@
                         <select name="ward" id="" class="form-control">
                          <?php echo $ward_dropdown ?>
                         </select>
+                        <p class="error text-center alert alert-danger hidden" hidden></p>
                       </div>
                     </div>
                   </div>
@@ -120,7 +168,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary" id="save_service_provider_btn">Save changes</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -140,4 +188,57 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <script>
+    //check if save_service_button has been clicked
+    $("#save_service_provider_btn").click(function(){
+      $.ajax({
+        type : 'POST',
+        url : 'serviceprovider',
+        data : {
+          '_token' : $('input[name=_token]').val(),
+          'service_provider_name' : $('input[name=service_provider_name]').val(),
+          'registration_details' : $('input[name=registration_details]').val(),
+          'age' : $('input[name=age]').val(),
+          'address' : $('input[name=address]').val(),
+          'email' : $('input[name=email]').val(),
+          'telephone' : $('input[name=telephone]').val(),
+          'website' : $('input[name=website]').val(),
+          'ward' : $('input[name=ward]').val(),
+          'town' : $('input[name=town]').val(),
+          'category' : $('input[name=category]').val(),
+          'duration' : $('input[name=dutration]').val(),
+
+          },
+          success : function(data){
+            if((data.errors)){
+              $('.error').show();
+              $('.error').prop('hidden',false);
+              $('.error').text(data.errors.service_provider_name);
+              $('.error').text(data.errors.service_provider_description);
+              $('.error').text(data.errors.county);
+              $('.error').text(data.errors.subcounty);
+              $('.error').text(data.errors.ward);
+              
+            }else{
+              $('.error').remove();
+              $('#example1').append(" <tr>"+
+                      "<td>" + data.id + "</td>"+
+                      "<td>" + data.name + "</td>"+
+                      "<td>" + data.registration_details + "</td>"+
+                      "<td>" + data.age + "</td>"+
+                      "<td>" + data.address + "</td>"+
+                      "<td>" + data.email + "</td>"+
+                      "<td>" + data.telephone + "</td>"+
+                      "<td>" + data.website + "</td>"+
+                      "<td>" + data.ward + "</td>"+
+                      "<td>" + data.town + "</td>"+
+                      "<td>" + data.category + "</td>"+
+                      "<td>" + data.duration + "</td>"+
+                      "<td><a href='' class='btn btn-sm btn-primary'><i class='fa fa-eye' aria-hidden='true'></i></a></td>"+
+                      "</tr>")
+            }
+          },
+      })
+    })
+    </script>
 @endsection
