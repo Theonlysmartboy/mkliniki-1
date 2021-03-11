@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\CountyController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,9 @@ use App\Http\Controllers\CountyController;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::group(['prefix'=> 'userApi'], function(){
+    Route::get('/', [UserController::class, 'indexApi'])->name('userapi');
 });
 Route::group(['prefix'=> 'serviceApi'], function(){
     Route::get('/', [ServiceController::class, 'indexApi'])->name('serviceapi');

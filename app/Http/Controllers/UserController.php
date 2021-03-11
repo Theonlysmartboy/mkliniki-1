@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
+use Response;
+
 class UserController extends Controller
 {
     //
@@ -21,4 +23,9 @@ class UserController extends Controller
         
 
     }
+    public function indexApi(){
+        $users = User::all();
+        return response::json(array('users'=>$users));
+    }
+    
 }
