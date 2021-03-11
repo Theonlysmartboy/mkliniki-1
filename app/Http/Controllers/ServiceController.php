@@ -24,6 +24,16 @@ class ServiceController extends Controller
         }
 
     }
+    public function indexApi(){
+        //if(Auth::user()){
+            //$title="Services";
+            $services = Service::all();
+            return response::json(array('services'=>$services));
+        //}
+        /*else{
+            return redirect('login'); 
+        }*/
+    }
     //
     public function store(Request $request){
         $rules = array(

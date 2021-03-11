@@ -22,6 +22,10 @@ class CountyController extends Controller
             return redirect('login');
         }
     }
+    public function indexApi(){
+        $counties=County::get();
+        return response::json(array('counties'=>$counties));
+    }
     public function store(Request $request){
         $rules=array(
             'county_name'=>'required',

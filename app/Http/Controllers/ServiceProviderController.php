@@ -11,6 +11,8 @@ use App\Models\SubCounty;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
+use Response;
+
 use DB;
 
 class ServiceProviderController extends Controller
@@ -53,6 +55,16 @@ class ServiceProviderController extends Controller
             return redirect('login');
         }
     
+    }
+    public function indexApi(){
+        $service_providers = DB::table('service_providers')
+        ->join('wards', 'service_providers.ward', 'wards.id')
+        ->join('categories', 'service_providers.category', 'categories.id')
+        ->select('service_providers.*', 'wards.name As ward_name', 'categories.name As category_name')
+        ->get();
+
+        return response::json(array('serviceproviders'=>$service_providers));
+
     }
     public function store(Request $request){
         $rules=array(

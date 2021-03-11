@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServiceProviderController;
+use App\Http\Controllers\CountyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::group(['prefix'=> 'serviceApi'], function(){
+    Route::get('/', [ServiceController::class, 'indexApi'])->name('serviceapi');
+});
+Route::group(['prefix'=> 'serviceProviderApi'], function(){
+    Route::get('/', [ServiceProviderController::class, 'indexApi'])->name('serviceproviderapi');
+});
+Route::group(['prefix'=> 'countyApi'], function(){
+    Route::get('/', [CountyController::class, 'indexApi'])->name('countyapi');
 });
