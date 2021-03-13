@@ -6,6 +6,8 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\CountyController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SubCountyController;
+use App\Http\Controllers\WardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +34,12 @@ Route::group(['prefix'=> 'serviceProviderApi'], function(){
 });
 Route::group(['prefix'=> 'countyApi'], function(){
     Route::get('/', [CountyController::class, 'indexApi'])->name('countyapi');
+});
+Route::group(['prefix'=>'subcountyApi'],function(){
+    Route::get('/',[SubCountyController::class, 'indexApi']);
+});
+Route::group(['prefix'=>'wardApi'],function(){
+    Route::get('/',[WardController::class ,'indexApi']);
+    //Route::get
+
 });

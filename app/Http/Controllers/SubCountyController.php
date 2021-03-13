@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\County;
 use App\Models\SubCounty;
 
+use Response;
+use DB;
+
 
 class SubCountyController extends Controller
 {
@@ -27,4 +30,15 @@ class SubCountyController extends Controller
         return redirect('login');
     }
 }
+public function indexApi(Request $request){
+    $county=$request->input('county');
+    $subcounties=DB::table('sub_counties')
+    ->where('county',$county)
+    ->select('id','name')
+    ->get();
+
+   // return Response::json(array('subcounties',$subcounties));
+    return Response::json(array('subcounties'=>$subcounties));
+}
+
 }

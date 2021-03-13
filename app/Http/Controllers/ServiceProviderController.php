@@ -56,11 +56,19 @@ class ServiceProviderController extends Controller
         }
     
     }
-    public function indexApi(){
+    public function indexApi(Request $request){
+        
+        $ward=$request->input('ward');
+        $category=$request->input('category');
+        $town =$request->input('town');;//$_request['ward'];
+        /*The serach should either be a town or a ward*/
         $service_providers = DB::table('service_providers')
         ->join('wards', 'service_providers.ward', 'wards.id')
         ->join('categories', 'service_providers.category', 'categories.id')
-        ->select('service_providers.*', 'wards.name As ward_name', 'categories.name As category_name')
+        ->where('ward',$ward)
+        ->where('category',$category)
+        //->where('town',$town);
+        ->select('service_providers.*', 'wards.name As ward', 'categories.name As category')
         ->get();
 
         return response::json(array('serviceproviders'=>$service_providers));

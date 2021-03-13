@@ -8,6 +8,9 @@ use App\Models\County;
 use App\Models\SubCounty;
 use App\Models\Ward;
 
+use Response;
+use DB;
+
 class WardController extends Controller
 {
     public function index(){
@@ -30,6 +33,17 @@ class WardController extends Controller
         else{
             return redirect('login');
         }
+    }
+    public function indexApi(Request $request){
+        $subcounty= $request->input('subcounty');
+        //$subcounty='1';
+        $wards=DB::table('wards')
+        ->where('sub_county',$subcounty)
+        ->select('id','name')
+        ->get();
+
+        return Response::json(array('wards'=>$wards));
+
     }
     public function store(){
 
