@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -68,10 +69,25 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'api_token' => bin2hex(openssl_random_pseudo_bytes(30)),
         ]);
         $user->roles()->attach(\App\Models\Role::where('name', 'user')->first());
 
         return $user;
+
+    }
+    protected function createApi(Request $request){
+
+        $data=$request->all();
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'api_token' => bin2hex(openssl_random_pseudo_bytes(30)),
+        ]);
+        $user->roles()->attach(\App\Models\Role::where('name', 'user')->first());
+
+        return response->json(array($user));
 
     }
 }

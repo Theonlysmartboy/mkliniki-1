@@ -25,6 +25,7 @@ class UserController extends Controller
     }
     public function indexApi(){
         $users = User::all();
+        //only provide the safe details of
         return response::json(array('users'=>$users));
     }
     
