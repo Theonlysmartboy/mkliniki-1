@@ -68,6 +68,7 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phonenumber' => $data['phonenumber'],
             'password' => Hash::make($data['password']),
             'api_token' => bin2hex(openssl_random_pseudo_bytes(30)),
         ]);
@@ -82,12 +83,13 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phonenumber' => $data['phonenumber'],
             'password' => Hash::make($data['password']),
             'api_token' => bin2hex(openssl_random_pseudo_bytes(30)),
         ]);
         $user->roles()->attach(\App\Models\Role::where('name', 'user')->first());
 
-        return response->json(array($user));
+        return response()->json($user);
 
     }
 }
