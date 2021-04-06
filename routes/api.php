@@ -9,6 +9,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubCountyController;
 use App\Http\Controllers\WardController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,5 +47,9 @@ Route::group(['prefix'=>'wardApi'],function(){
     //Route::get
 Route::group(['prefix'=>'userregisterApi'],function(){
         Route::post('/',[RegisterController::class ,'createApi']);
+
+});
+Route::group(['prefix'=>'userloginApi'],function(){
+    Route::post('/',[LoginController::class ,'loginApi']);
 
 });
