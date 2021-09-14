@@ -51,5 +51,9 @@ Route::group(['prefix'=>'userregisterApi'],function(){
 });
 Route::group(['prefix'=>'userloginApi'],function(){
     Route::post('/',[LoginController::class ,'loginApi']);
-
 });
+
+Route::group(['prefix'=>'analytics'],function(){
+    Route::post('/store',[LoginController::class ,'store']);
+});
+
