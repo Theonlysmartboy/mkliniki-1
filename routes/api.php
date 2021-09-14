@@ -2,14 +2,15 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\ServiceProviderController;
-use App\Http\Controllers\CountyController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\SubCountyController;
 use App\Http\Controllers\WardController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CountyController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\AnalyticController;
+use App\Http\Controllers\SubCountyController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ServiceProviderController;
 
 
 /*
@@ -54,6 +55,6 @@ Route::group(['prefix'=>'userloginApi'],function(){
 });
 
 Route::group(['prefix'=>'analytics'],function(){
-    Route::post('/store',[LoginController::class ,'store']);
+    Route::post('/store',[AnalyticController::class ,'store']);
 });
 
